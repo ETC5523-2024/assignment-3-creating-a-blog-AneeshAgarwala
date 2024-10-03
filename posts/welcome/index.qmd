@@ -2,7 +2,7 @@
 title: "Morphing Through Time: The Enduring Popularity of the Power Rangers Franchise"
 author: "Aneesh Agarwal"
 date: "2024-10-04"
-categories: [analysis, opinion]
+categories: [franchise analysis, thematic exploration, trends]
 abstract: "This post looks at the Power Rangers series across 30 years, highlighting its golden years under Haim Saban when strong character development and exciting storylines drove its popularity. However, as the show changed hands and began focusing more on broad themes and fantastical elements, it lost some of its charm. This shift from individual characters to overarching themes led to a drop in audience engagement."
 abstract-title: "Summary"
 bibliography: bibliography.bib
