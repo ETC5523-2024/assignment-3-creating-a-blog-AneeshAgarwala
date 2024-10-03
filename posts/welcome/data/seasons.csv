@@ -1,0 +1,29 @@
+,season_title,season_num,number_of_episodes,air_date_first_ep,air_date_last_ep,producer,IMDB_rating
+1,Mighty Morphin (S1),1,60,28-08-1993,23-05-1994,Saban,6.5
+2,Mighty Morphin (S2),2,52,21-07-1994,20-05-1995,Saban,6.5
+3,Mighty Morphin (S3),3,33,02-09-1995,27-11-1995,Saban,6.5
+4,Zeo,4,50,20-04-1996,27-11-1996,Saban,6.6
+5,Turbo,5,45,19-04-1997,24-11-1997,Saban,5.7
+6,In Space,6,43,06-02-1998,21-11-1998,Saban,7.3
+7,Lost Galaxy,7,45,06-02-1999,18-12-1999,Saban,6.9
+8,Lightspeed Rescue,8,40,12-02-2000,18-11-2000,Saban,6.5
+9,Time Force,9,40,03-02-2001,17-11-2001,Saban,7.1
+10,Wild Force,10,40,09-02-2002,16-11-2002,Saban,6.3
+11,Ninja Storm,11,38,15-02-2003,15-11-2003,Disney,6.4
+12,Dino Thunder,12,38,14-02-2004,20-11-2004,Disney,6.8
+13,S.P.D.,13,38,05-02-2005,14-11-2005,Disney,6.7
+14,Mystic Force,14,32,20-02-2006,13-11-2006,Disney,6.7
+15,Operation Overdrive,15,32,26-02-2007,12-11-2007,Disney,5.5
+16,Jungle Fury,16,32,18-02-2008,03-11-2008,Disney,6.6
+17,R.P.M.,17,32,07-03-2009,26-12-2009,Disney,6.6
+18,Samurai,18,22,07-02-2011,10-12-2011,neo-Saban,5.1
+19,Super Samurai,19,22,18-02-2012,15-12-2012,neo-Saban,5.1
+20,Megaforce,20,22,02-02-2013,07-12-2013,neo-Saban,5.7
+21,Super Megaforce,21,20,15-02-2014,22-11-2014,neo-Saban,5.7
+22,Dino Charge,22,22,07-02-2015,12-12-2015,neo-Saban,6.5
+23,Dino Super Charge,23,22,30-01-2016,10-12-2016,neo-Saban,6.5
+24,Ninja Steel,24,22,21-01-2017,01-12-2017,neo-Saban,6
+25,Super Ninja Steel,25,22,27-01-2018,01-12-2018,neo-Saban,6
+26,Beast Morphers (S1),26,22,02-03-2019,14-12-2019,Hasbro,6.8
+27,Beast Morphers (S2),27,22,22-02-2020,12-12-2020,Hasbro,6.8
+28,Dino Fury,28,44,13-09-2021,2022,Hasbro,6.8
