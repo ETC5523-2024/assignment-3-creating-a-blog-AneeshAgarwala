@@ -9,6 +9,7 @@ bibliography: bibliography.bib
 bibliographystyle: apa
 link-citations: true
 biblio-title: "References"
+image: thumbnail.jpg
 ---
 
 ```{r global, echo=FALSE, message=FALSE, warning=FALSE}
@@ -31,22 +32,20 @@ library(htmlwidgets)
 library(patchwork)
 ```
 
-```{r load-data}
+<iframe width="100%" height="557" src="https://www.youtube.com/embed/nHalaFUqnTI?autoplay=1" title="Official Opening Theme and Theme Song | Power Rangers Official" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+28^th^ August 2024 marked the 31st anniversary of Mighty Morphin Power Rangers, a show that captivated audiences from its debut in 1993. Created by Haim Saban, Shuki Levy, and Shotaro Ishinomori, Power Rangers quickly became a cultural phenomenon, introducing us to five teenagers who became heroes through teamwork and inclusivity [@national_day_calander_national_2024; @aguilar_mighty_2024]. The franchise expanded beyond TV into toys, movies, games, and more, becoming a cherished part of many childhoods. Today, with Hasbro’s SCG Power Rangers LLC at the helm, it continues to inspire new generations.
+
+This blog delves into the franchise's enduring appeal by analyzing IMDB ratings and performing sentiment analysis on episode synopses by using the data from the [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-08-27/readme.md) repository. The repository comprehensive details on every episode released across all seasons, including episode descriptions, IMDB ratings, air dates, producer, the number of episodes per season, and more. The code to load the extracted csv files from TidyTuesday repository in R is given below:
+
+```{r load-data, echo=TRUE}
 episodes <- read.csv("data/episodes.csv")
 seasons <- read.csv("data/seasons.csv")
 ```
 
-![](thumbnail.jpg) 
-
-28^th^ August 2024 marked the 31st anniversary of Mighty Morphin Power Rangers, a show that captivated audiences from its debut in 1993. Created by Haim Saban, Shuki Levy, and Shotaro Ishinomori, Power Rangers quickly became a cultural phenomenon, introducing us to five teenagers who became heroes through teamwork and inclusivity [@national_day_calander_national_2024; @aguilar_mighty_2024].
-
-The franchise expanded beyond TV into toys, movies, games, and more, becoming a cherished part of many childhoods. Today, with Hasbro’s SCG Power Rangers LLC at the helm, it continues to inspire new generations.
-
-This blog delves into the franchise's enduring appeal by analyzing IMDB ratings and performing sentiment analysis on episode synopses by using the data from the [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-08-27/readme.md) repository. The repository comprehensive details on every episode released across all seasons, including episode descriptions, IMDB ratings, air dates, producer, the number of episodes per season, and more.
-
 Our goal is to uncover key **themes** and **trends**, offering insights that could guide future developments in the Power Rangers universe.
 
-## Popularity: Who Produced the Best Season?
+## Measuring Popularity: Who Produced the Best Season?
 
 @fig-phase traces the Weighted IMDB rating of across all the seasons of power rangers under different production phases namely, Saban, Disney, neo-Saban & Hasbro. We can observe that the highest rating was achieved under Saban era particularly by Season 6,7 and 8. The neo-Saban era witnessed an consistently low rating across all the seasons produced whereas Disney's rating have oscillated across the phase of production. Hasbro being the latest entry have only produced 2 season so far and has nearly constant rating.
 
@@ -188,7 +187,12 @@ p1 <- top_rated_tokens |>
     color = "random-dark"
     )
 
-manipulateWidget::combineWidgets(wordcloud, p1, nrow = 1, header = "<span style = 'font-size: 14.0pt;'>a. Popular Themes Across the Entire Franchise.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp b. Popular Themes Across Top 100 Episodes.</span>")
+wordwidget <- manipulateWidget::combineWidgets(wordcloud, p1, nrow = 1, header = "<span style = 'font-size: 16.0pt;'>a. Popular Themes Across the Entire Franchise.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp b. Popular Themes Across Top 100 Episodes.</span>")
+
+saveWidget(wordwidget, "wordwidget.html", selfcontained = F, knitrOptions = list(align = "C"))
+  
+webshot("wordwidget.html", delay = 2, zoom = 0.60)
+
 ```
 
 In part A (see @fig-cloud) of the word cloud analysis, we notice that characters such as 'Tommy', 'Rita', 'Zedd', and 'Wes' appear frequently. This suggests that these characters were central to the show's popularity. The recurring themes like 'save', 'friend', 'zords', 'fight', and 'time' also highlight that the Power Rangers series frequently focused on saving people from monsters, building friendships, and engaging in Megazord battles.
