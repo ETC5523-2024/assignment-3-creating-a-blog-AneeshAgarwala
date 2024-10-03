@@ -1,4 +1,31 @@
 /* css styles */
 .navbar-dark, .quarto-title-banner {
-  background-color: #006DAE;
+  background-color: #193047;
+  font-family: 'Merriweather';
+  color: white;
 }
+
+h2 {
+  font-family: 'Merriweather';
+}
+
+p {
+  font-family: 'Montserrat';
+}
+
+h1.title {
+  color: white;
+}
+
+code.sourceCode{
+  background-color: white;
+  font-family: 'Lucida Console';
+}
+
+div.quarto-content{
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #444cf7, #444cf7 50%, #e5e5f7 50%);
+  background-size: 10px 10px;
+}
+
