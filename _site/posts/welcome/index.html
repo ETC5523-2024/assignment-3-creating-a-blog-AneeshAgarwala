@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -88,22 +122,6 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
-<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-<link href="../../site_libs/combineWidgetStyle-0.1/combineWidgets.css" rel="stylesheet">
-
-<script src="../../site_libs/combineWidgets-binding-0.11.1/combineWidgets.js"></script>
-
-<link href="../../site_libs/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
-
-<script src="../../site_libs/wordcloud2-0.0.1/wordcloud2-all.js"></script>
-
-<script src="../../site_libs/wordcloud2-0.0.1/hover.js"></script>
-
-<script src="../../site_libs/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
-
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -197,13 +215,17 @@ div.csl-indent {
 
 
 
-<p><img src="thumbnail.jpg" class="img-fluid"></p>
-<p>28<sup>th</sup> August 2024 marked the 31st anniversary of Mighty Morphin Power Rangers, a show that captivated audiences from its debut in 1993. Created by Haim Saban, Shuki Levy, and Shotaro Ishinomori, Power Rangers quickly became a cultural phenomenon, introducing us to five teenagers who became heroes through teamwork and inclusivity <span class="citation" data-cites="national_day_calander_national_2024 aguilar_mighty_2024">(<a href="#ref-national_day_calander_national_2024" role="doc-biblioref">National Day Calander 2024</a>; <a href="#ref-aguilar_mighty_2024" role="doc-biblioref">Aguilar 2024</a>)</span>.</p>
-<p>The franchise expanded beyond TV into toys, movies, games, and more, becoming a cherished part of many childhoods. Today, with Hasbro’s SCG Power Rangers LLC at the helm, it continues to inspire new generations.</p>
-<p>This report delves into the franchise’s enduring appeal by analyzing IMDB ratings and performing sentiment analysis on episode synopses by using the data from the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-08-27/readme.md">TidyTuesday</a> repository. The repository comprehensive details on every episode released across all seasons, including episode descriptions, IMDB ratings, air dates, producer, the number of episodes per season, and more.</p>
+<iframe width="100%" height="557" src="https://www.youtube.com/embed/nHalaFUqnTI?autoplay=1" title="Official Opening Theme and Theme Song | Power Rangers Official" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p>28<sup>th</sup> August 2024 marked the 31st anniversary of Mighty Morphin Power Rangers, a show that captivated audiences from its debut in 1993. Created by Haim Saban, Shuki Levy, and Shotaro Ishinomori, Power Rangers quickly became a cultural phenomenon, introducing us to five teenagers who became heroes through teamwork and inclusivity <span class="citation" data-cites="national_day_calander_national_2024 aguilar_mighty_2024">(<a href="#ref-national_day_calander_national_2024" role="doc-biblioref">National Day Calander 2024</a>; <a href="#ref-aguilar_mighty_2024" role="doc-biblioref">Aguilar 2024</a>)</span>. The franchise expanded beyond TV into toys, movies, games, and more, becoming a cherished part of many childhoods. Today, with Hasbro’s SCG Power Rangers LLC at the helm, it continues to inspire new generations.</p>
+<p>This blog delves into the franchise’s enduring appeal by analyzing IMDB ratings and performing sentiment analysis on episode synopses by using the data from the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-08-27/readme.md">TidyTuesday</a> repository. The repository comprehensive details on every episode released across all seasons, including episode descriptions, IMDB ratings, air dates, producer, the number of episodes per season, and more. The code to load the extracted csv files from TidyTuesday repository in R is given below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>episodes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/episodes.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>seasons <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/seasons.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Our goal is to uncover key <strong>themes</strong> and <strong>trends</strong>, offering insights that could guide future developments in the Power Rangers universe.</p>
-<section id="popularity-who-produced-the-best-season" class="level2">
-<h2 class="anchored" data-anchor-id="popularity-who-produced-the-best-season">Popularity: Who Produced the Best Season?</h2>
+<section id="measuring-popularity-who-produced-the-best-season" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-popularity-who-produced-the-best-season">Measuring Popularity: Who Produced the Best Season?</h2>
 <p><a href="#fig-phase" class="quarto-xref">Figure&nbsp;1</a> traces the Weighted IMDB rating of across all the seasons of power rangers under different production phases namely, Saban, Disney, neo-Saban &amp; Hasbro. We can observe that the highest rating was achieved under Saban era particularly by Season 6,7 and 8. The neo-Saban era witnessed an consistently low rating across all the seasons produced whereas Disney’s rating have oscillated across the phase of production. Hasbro being the latest entry have only produced 2 season so far and has nearly constant rating.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -239,16 +261,17 @@ Figure&nbsp;2: Top Rated Seasons by IMDB Rating Coloured by Production Phase
 <h2 class="anchored" data-anchor-id="character-vs.-theme-what-appeals-to-the-audience">Character vs.&nbsp;Theme: What Appeals to the Audience?</h2>
 <p>In this section we have generated two a word cloud images examining the most-recurring themes in power ranger series. The themes for each episode are derived by tokenizing the description of each episode in the episodes table (see <a href="#tbl-episode" class="quarto-xref">Table&nbsp;1</a>). We implicitly assume that the description of the episode is linked to popularity and hence the consequent ratings i.e., certain themes in episodes stated in the description attract the attention of the viewers.</p>
 <div class="cell">
-<div id="fig-cloud" class="cell-output-display quarto-figure quarto-figure-center quarto-float anchored">
+<div class="cell-output-display">
+<div id="fig-cloud" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cloud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="combineWidgets html-widget html-fill-item" id="htmlwidget-db2fee5ef0c882c006df" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-db2fee5ef0c882c006df">{"x":{"data":[{"word":["time","tommy","rita","save","zedd","fight","wes","master","lord","angel","grove","dr","bulk","plan","attacks","defeat","friend","skull","friends","spell","jason","kimberly","life","alien","green","megazord","monsters","powerful","billy","force","red","control","mutant","zordon","dai","return","shi","trent","zords","casey","race","white","adam","planet","rescue","secret","tells","bring","escape","future"],"freq":[82,79,69,67,59,55,54,52,48,43,42,41,39,39,38,37,37,36,34,34,32,32,32,31,31,31,31,31,30,30,29,28,28,28,27,27,27,27,26,25,25,25,24,24,24,24,24,23,23,23],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":1.536585365853658,"backgroundColor":"white","gridSize":0,"minRotation":-0.7853981633974483,"maxRotation":0.7853981633974483,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},{"word":["tommy","green","jason","andros","rita","zordon","astronema","bulk","skull","time","zedd","alpha","attacks","dimension","goldar","spell","terra","5","angel","carlos","center","command","grove","king","lord","lost","planet","psycho","save","venture","wizard","dark","defender","leo","magna","trakeena","white","attempt","deviot","dragonzord","empire","escape","galaxy","heroes","machine","red","space","sword","zeo","zhane"],"freq":[30,25,16,15,14,13,11,11,11,9,9,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":4.199999999999999,"backgroundColor":"white","gridSize":0,"minRotation":-0.7853981633974483,"maxRotation":0.7853981633974483,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null}],"widgetType":["wordcloud2","wordcloud2"],"elementId":["widget61950367","widget953854255"],"html":"<div class=\"cw-container\"><div><span style = 'font-size: 14.0pt;'>a. Popular Themes Across the Entire Franchise.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp b. Popular Themes Across Top 100 Episodes.<\/span><\/div><div class=\"cw-subcontainer\"><div class=\"cw-content cw-by-row\"><div class=\"cw-row cw-by-row\" style=\"flex:1;-webkit-flex:1\"><div class=\"cw-col\" style=\"flex:1;-webkit-flex:1\">\n              <div id=\"widget61950367\" class=\"wordcloud2 cw-widget html-widget-static-bound\" style=\"width:100%;height:100%\"><\/div>\n              <\/div><div class=\"cw-col\" style=\"flex:1;-webkit-flex:1\">\n              <div id=\"widget953854255\" class=\"wordcloud2 cw-widget html-widget-static-bound\" style=\"width:100%;height:100%\"><\/div>\n              <\/div><\/div><\/div><\/div><\/div>","hasCrosstalkInputs":false},"evals":[],"jsHooks":[]}</script>
+<img src="index_files/figure-html/fig-cloud-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cloud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: WordCloud for Popular Themes
 </figcaption>
 </figure>
+</div>
 </div>
 </div>
 <p>In part A (see <a href="#fig-cloud" class="quarto-xref">Figure&nbsp;3</a>) of the word cloud analysis, we notice that characters such as ‘Tommy’, ‘Rita’, ‘Zedd’, and ‘Wes’ appear frequently. This suggests that these characters were central to the show’s popularity. The recurring themes like ‘save’, ‘friend’, ‘zords’, ‘fight’, and ‘time’ also highlight that the Power Rangers series frequently focused on saving people from monsters, building friendships, and engaging in Megazord battles.</p>
@@ -258,7 +281,7 @@ Figure&nbsp;3: WordCloud for Popular Themes
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In this report, we have analyzed the evolution of the Power Rangers series over a span of 30 years. The show reached its peak popularity during its early years under the production of Haim Saban. During this time, the series thrived by developing compelling hero and villain arcs and maintaining strong supporting themes. However, as the series changed hands four times in its later stages, there was a noticeable shift in focus. Episodes began to emphasize broader themes such as friendship, saving the world, and fantastical or sci-fi elements like angels, time travel, and spells, rather than concentrating on individual character development. This shift in production and direction appears to have contributed to a decline in the show’s popularity.</p>
+<p>In this blog, we have analyzed the evolution of the Power Rangers series over a span of 30 years. The show reached its peak popularity during its early years under the production of Haim Saban. During this time, the series thrived by developing compelling hero and villain arcs and maintaining strong supporting themes. However, as the series changed hands four times in its later stages, there was a noticeable shift in focus. Episodes began to emphasize broader themes such as friendship, saving the world, and fantastical or sci-fi elements like angels, time travel, and spells, rather than concentrating on individual character development. This shift in production and direction appears to have contributed to a decline in the show’s popularity.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
