@@ -11,6 +11,10 @@ website:
         href: https://github.com/AneeshAgarwala
       - icon: linkedin
         href: https://www.linkedin.com/in/aneesh-agarwal-0b5755201/
+
+execute:
+  freeze: auto
+
 format:
   html:
     theme: cosmo
