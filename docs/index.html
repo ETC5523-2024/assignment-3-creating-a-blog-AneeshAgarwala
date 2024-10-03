@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-author','listing-reading-time','listing-categories','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -203,20 +203,20 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="franchise analysis,thematic exploration,trends" data-listing-date-sort="1727964000000" data-listing-file-modified-sort="1727961584516" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3091">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
-<p><img src="./posts/welcome/thumbnail.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">Morphing Through Time: The Enduring Popularity of the Power Rangers Franchise</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome/index.html" class="no-external"></a>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="franchise analysis,thematic exploration,trends" data-listing-date-sort="1727964000000" data-listing-file-modified-sort="1727962588592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3091">
+<a href="./posts/welcome/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/welcome/thumbnail.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Morphing Through Time: The Enduring Popularity of the Power Rangers Franchise
+</h5>
+<div class="listing-reading-time card-text text-muted">
+16 min
 </div>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('franchise analysis'); return false;">
@@ -229,20 +229,20 @@ thematic exploration
 trends
 </div>
 </div>
-<div class="listing-description">
-<a href="./posts/welcome/index.html" class="no-external">This post looks at the Power Rangers series across 30 years, highlighting its golden years under Haim Saban when strong character development and exciting storylines drove its popularity. However, as the show changed hands and began focusing more on broad themes and fantastical elements, it lost some of its charm. This shift from individual characters to overarching themes led to a drop in audience engagement.</a>
+<div class="card-text listing-description">
+This post looks at the Power Rangers series across 30 years, highlighting its golden years under Haim Saban when strong character development and exciting storylines drove…
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Oct 4, 2024
-</div>
+<div class="card-attribution card-text-small justify">
 <div class="listing-author">
 Aneesh Agarwal
 </div>
-</a>
+<div class="listing-date">
+Oct 4, 2024
 </div>
+</div>
+</div>
+</div>
+</a>
 </div>
 </div>
 <div class="listing-no-matching d-none">
