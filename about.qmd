@@ -1,13 +1,27 @@
 ---
-title: "About"
+title: "About Me"
 image: profile.jpg
+theme: journal
 about:
-  template: jolla
+  image-shape: round
+  template: solana
   links:
     - icon: github
       text: Github
-      href: https://github.com/etc5523-2022
+      href: https://github.com/AneeshAgarwala
+      
+    - icon: linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/aneesh-agarwal-0b5755201/
 
 ---
 
-This is a blog template for the ETC5523 Communicating with Data assessment at Monash University.
+I am Aneesh Agarwal, a Master of Business Analytics student at Monash University, specializing in advanced Simulation and Optimization techniques. With a strong foundation in data analysis and a passion for leveraging data to solve complex business problems, I have developed proficiency in R/Python programming and Business Intelligence
+
+My academic journey has equipped me with robust skills in statistical analysis, machine learning, and econometrics, which I have applied in various projects, including a dissertation on the relationship between renewable energy consumption and economic growth in India. Additionally, my hands-on experience with tools like Python, Power BI, and SQL has enabled me to automate data processes and enhance data accuracy in my current part-time role as a Data Entry Consultant.
+
+## Education
+
+Masters of Business Analytics | Monash University, VIC, AU  (Dec 2025 - Jan 2024)
+
+B.A in Economics (Honors) | Christ (Deemed to be) University, KA, IND (Jun 2020 - May 2023)
